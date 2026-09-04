@@ -4,6 +4,17 @@ export type Goal = {
   saved: number
   target: number
   completion: string
+  monthlyContribution?: number
+  priority?: 'High' | 'Medium' | 'Low'
+  targetDate?: string
+}
+
+export type Transaction = {
+  id?: string
+  name: string
+  category: string
+  amount: number
+  date: string
 }
 
 export type DemoFinancialState = {
@@ -14,7 +25,7 @@ export type DemoFinancialState = {
   financialHealth: number
   goals: Goal[]
   upcoming: { name: string; amount: number; due: string }[]
-  transactions: { name: string; category: string; amount: number; date: string }[]
+  transactions: Transaction[]
   cashFlow: Record<string, { income: number; expenses: number; savings: number }[]>
   incomeRecords: { id: string; source: string; amount: number; expectedDate: string; actualDate?: string; frequency: string; status: 'RECEIVED' | 'EXPECTED' | 'DELAYED' | 'NOT RECEIVED' }[]
   commitments: { id: string; name: string; amount: number; date: string; type: string }[]
@@ -38,11 +49,11 @@ export const demoFinancialState: DemoFinancialState = {
     { name: 'Insurance', amount: 2800, due: 'Due in 17 days' },
   ],
   transactions: [
-    { name: 'Campus Cafe', category: 'Food & Dining', amount: 420, date: 'Today' },
-    { name: 'Metro Recharge', category: 'Transport', amount: 800, date: 'Yesterday' },
-    { name: 'Cloud Storage', category: 'Subscriptions', amount: 149, date: '18 Aug' },
-    { name: 'Freelance Income', category: 'Income', amount: 24000, date: '16 Aug' },
-    { name: 'Bookstore', category: 'Education', amount: 1280, date: '14 Aug' },
+    { id: 'tx-cafe', name: 'Campus Cafe', category: 'Food & Dining', amount: 420, date: 'Today' },
+    { id: 'tx-metro', name: 'Metro Recharge', category: 'Transport', amount: 800, date: 'Yesterday' },
+    { id: 'tx-cloud', name: 'Cloud Storage', category: 'Subscriptions', amount: 149, date: '18 Aug' },
+    { id: 'tx-freelance', name: 'Freelance Income', category: 'Income', amount: 24000, date: '16 Aug' },
+    { id: 'tx-bookstore', name: 'Bookstore', category: 'Education', amount: 1280, date: '14 Aug' },
   ],
   cashFlow: {
     '7D': [{ income: 0, expenses: 1800, savings: 0 }, { income: 24000, expenses: 2600, savings: 21400 }, { income: 0, expenses: 1100, savings: 20300 }, { income: 0, expenses: 2100, savings: 18200 }, { income: 0, expenses: 900, savings: 17300 }, { income: 0, expenses: 1500, savings: 15800 }, { income: 0, expenses: 1000, savings: 14800 }],

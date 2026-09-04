@@ -708,7 +708,7 @@ export default function PlasmaRing(props: Props) {
             // World-space ray direction = Mᵀ · D_cam
             // Mᵀ = [[cy, sy*stp, -sy*ctp], [0, ctp, stp], [sy, -cy*stp, cy*ctp]]
             let Dx = dcx * cy  + dcy * sy * stp + dcz * (-sy * ctp)
-            let Dy = dcx * 0   + dcy * ctp      + dcz * stp
+            let Dy = dcy * ctp + dcz * stp
             let Dz = dcx * sy  + dcy * (-cy * stp) + dcz * (cy * ctp)
             const DLen = Math.sqrt(Dx*Dx + Dy*Dy + Dz*Dz)
             Dx /= DLen; Dy /= DLen; Dz /= DLen

@@ -212,7 +212,9 @@ export default function LiquidCarveButton(props: Props) {
         reducedMotion ? { duration: 0 } : transition;
 
     const live = useRef({ smoothness, reducedMotion });
-    live.current = { smoothness, reducedMotion };
+    useEffect(() => {
+        live.current = { smoothness, reducedMotion };
+    }, [smoothness, reducedMotion]);
 
     const offset = (e: React.PointerEvent) => {
         const root = scope.current as HTMLElement | null;
